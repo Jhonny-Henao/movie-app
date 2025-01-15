@@ -5,13 +5,11 @@ import { tmdbApi } from '@/services/tmdb';
 import { MovieDetails } from '@/types/movie'; // Importamos MovieDetails
 
 interface MoviePageProps {
-  params: {
-    id: string;
-  };
-  movie: MovieDetails; // Cambiar a MovieDetails aquí
+  movie: MovieDetails;
 }
 
-export async function generateMetadata({ params }: MoviePageProps) {
+// Ajustamos la función para recibir el parámetro `params` con el tipo adecuado
+export async function generateMetadata({ params }: { params: { id: string } }) {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
   return {
     title: `${movie.title} - ABC Movies`,
@@ -24,9 +22,7 @@ export async function generateMetadata({ params }: MoviePageProps) {
   };
 }
 
-export default async function MoviePage({ params }: MoviePageProps) {
-  const movie = await tmdbApi.getMovieDetails(Number(params.id));
-
+export default function MoviePage({ movie }: MoviePageProps) {
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="grid md:grid-cols-2 gap-8">
