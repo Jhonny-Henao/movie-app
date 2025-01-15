@@ -4,20 +4,17 @@ import { tmdbApi } from '@/services/tmdb';
 import type { Genre } from '@/types/movie';
 import type { Metadata } from 'next';
 
-// Definimos el tipo correcto para los parámetros
-type MoviePageParams = {
-  id: string;
-};
+// Tipado para los parámetros de la página
+interface PageProps {
+  params: {
+    id: string;
+  };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
 
-// Definimos el tipo para los props de generateMetadata
-type GenerateMetadataProps = {
-  params: MoviePageParams;
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-// Actualizamos la función generateMetadata
+// Función para generar los metadatos
 export async function generateMetadata(
-  { params }: GenerateMetadataProps
+  { params }: PageProps
 ): Promise<Metadata> {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
   
@@ -32,12 +29,10 @@ export async function generateMetadata(
   };
 }
 
-// Actualizamos el componente principal con el tipo correcto
+// Componente de la página
 export default async function MoviePage({
   params,
-}: {
-  params: MoviePageParams;
-}) {
+}: PageProps) {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
 
   return (
