@@ -1,16 +1,18 @@
-// app/movies/[id]/page.tsx
-import Image from 'next/image'; 
-import { FavoriteButton } from '@/components/FavoriteButton'; 
+import Image from 'next/image';
+import { FavoriteButton } from '@/components/FavoriteButton';
 import { tmdbApi } from '@/services/tmdb';
-import { MovieDetails } from '@/types/movie'; // Importamos MovieDetails
+import type { Genre } from '@/types/movie';
 
-interface MoviePageProps {
-  movie: MovieDetails;
-}
+// Definimos el tipo correcto para las props según Next.js
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
-// Ajustamos la función para recibir el parámetro `params` con el tipo adecuado
-export async function generateMetadata({ params }: { params: { id: string } }) {
+// Actualizamos la función generateMetadata
+export async function generateMetadata({ params }: Props) {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
+  
   return {
     title: `${movie.title} - ABC Movies`,
     description: movie.overview,
@@ -22,7 +24,10 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default function MoviePage({ movie }: MoviePageProps) {
+// Actualizamos el componente principal con el tipo correcto
+export default async function MoviePage({ params }: Props) {
+  const movie = await tmdbApi.getMovieDetails(Number(params.id));
+
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="grid md:grid-cols-2 gap-8">
@@ -35,7 +40,7 @@ export default function MoviePage({ movie }: MoviePageProps) {
             sizes="(max-width: 768px) 100vw, 50vw"
             priority
           />
-          <FavoriteButton
+          <FavoriteButton 
             movieId={movie.id}
             className="absolute top-4 right-4"
           />
@@ -43,7 +48,7 @@ export default function MoviePage({ movie }: MoviePageProps) {
         <div>
           <h1 className="text-4xl font-bold mb-4">{movie.title}</h1>
           <p className="text-gray-400 mb-6">{movie.overview}</p>
-
+          
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Fecha de lanzamiento</h2>
             <p>{new Date(movie.release_date).toLocaleDateString()}</p>
@@ -52,8 +57,11 @@ export default function MoviePage({ movie }: MoviePageProps) {
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2">Géneros</h2>
             <div className="flex flex-wrap gap-2">
-              {movie.genres.map((genre) => (
-                <span key={genre.id} className="bg-gray-100 text-black px-3 py-1 rounded-full text-sm">
+              {movie.genres.map((genre: Genre) => (
+                <span
+                  key={genre.id}
+                  className="bg-gray-100 text-black px-3 py-1 rounded-full text-sm"
+                >
                   {genre.name}
                 </span>
               ))}
