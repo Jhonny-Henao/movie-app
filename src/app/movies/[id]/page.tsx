@@ -2,15 +2,23 @@ import Image from 'next/image';
 import { FavoriteButton } from '@/components/FavoriteButton';
 import { tmdbApi } from '@/services/tmdb';
 import type { Genre } from '@/types/movie';
+import type { Metadata } from 'next';
 
-// Definimos el tipo correcto para las props según Next.js
-type Props = {
-  params: { id: string };
+// Definimos el tipo correcto para los parámetros
+type MoviePageParams = {
+  id: string;
+};
+
+// Definimos el tipo para los props de generateMetadata
+type GenerateMetadataProps = {
+  params: MoviePageParams;
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
 // Actualizamos la función generateMetadata
-export async function generateMetadata({ params }: Props) {
+export async function generateMetadata(
+  { params }: GenerateMetadataProps
+): Promise<Metadata> {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
   
   return {
@@ -25,7 +33,11 @@ export async function generateMetadata({ params }: Props) {
 }
 
 // Actualizamos el componente principal con el tipo correcto
-export default async function MoviePage({ params }: Props) {
+export default async function MoviePage({
+  params,
+}: {
+  params: MoviePageParams;
+}) {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
 
   return (
