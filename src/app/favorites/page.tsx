@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { MovieGrid } from '@/components/MovieGrid';
 import { tmdbApi } from '@/services/tmdb';
 import { useFavorites } from '@/hooks/useFavorites';
-import type { Movie, MovieDetails } from '@/types/movie';
+import type { Movie } from '@/types/movie';
 
 export default function FavoritesPage() {
   const { favorites } = useFavorites();
