@@ -4,10 +4,14 @@ import { tmdbApi } from '@/services/tmdb';
 import type { Genre } from '@/types/movie';
 import type { Metadata } from 'next';
 
+type MoviePageProps = {
+  id: string;
+}
+
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: MoviePageProps;
 }): Promise<Metadata> {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
   
@@ -26,12 +30,11 @@ export async function generateStaticParams() {
   return [];
 }
 
-type MoviePageProps = {
-  params: { id: string };
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-async function MoviePage({ params }: MoviePageProps) {
+export default async function MoviePage({
+  params,
+}: {
+  params: MoviePageProps;
+}) {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
 
   return (
@@ -102,5 +105,3 @@ async function MoviePage({ params }: MoviePageProps) {
     </main>
   );
 }
-
-export default MoviePage;
