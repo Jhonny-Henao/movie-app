@@ -26,11 +26,13 @@ export async function generateStaticParams() {
   return [];
 }
 
-type Props = {
-  params: { id: string };
+interface PageProps {
+  params: {
+    id: string;
+  };
 }
 
-export default async function Page({ params }: Props) {
+const Page = async ({ params }: PageProps) => {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
 
   return (
@@ -101,3 +103,5 @@ export default async function Page({ params }: Props) {
     </main>
   );
 }
+
+export default Page;
