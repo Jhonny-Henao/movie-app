@@ -5,11 +5,11 @@ import type { Genre } from '@/types/movie';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({
-  params: { id },
+  params,
 }: {
   params: { id: string };
 }): Promise<Metadata> {
-  const movie = await tmdbApi.getMovieDetails(Number(id));
+  const movie = await tmdbApi.getMovieDetails(Number(params.id));
   
   return {
     title: `${movie.title} - ABC Movies`,
@@ -26,13 +26,12 @@ export async function generateStaticParams() {
   return [];
 }
 
-interface PageProps {
-  params: {
-    id: string;
-  };
+type MoviePageProps = {
+  params: { id: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
 }
 
-const Page = async ({ params }: PageProps) => {
+async function MoviePage({ params }: MoviePageProps) {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
 
   return (
@@ -104,4 +103,4 @@ const Page = async ({ params }: PageProps) => {
   );
 }
 
-export default Page;
+export default MoviePage;
