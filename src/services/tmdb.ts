@@ -1,5 +1,5 @@
 // services/tmdb.ts
-import type { Movie, MovieDetails, MovieApiResponse } from '@/types/movie';
+import type { MovieDetails, MovieApiResponse } from '@/types/movie';
 import { createTMDBRequestOptions, createTMDBApiUrl } from '@/config/tmdb.config';
 
 class TMDBError extends Error {
