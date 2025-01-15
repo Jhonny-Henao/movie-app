@@ -4,7 +4,6 @@ import { tmdbApi } from '@/services/tmdb';
 import type { Genre } from '@/types/movie';
 import type { Metadata } from 'next';
 
-// Función para generar metadatos
 export async function generateMetadata({
   params: { id },
 }: {
@@ -27,17 +26,12 @@ export async function generateStaticParams() {
   return [];
 }
 
-interface PageParams {
-  id: string;
+type Props = {
+  params: { id: string };
 }
 
-export default async function Page({
-  params,
-}: {
-  params: PageParams;
-}) {
+export default async function Page({ params }: Props) {
   const movie = await tmdbApi.getMovieDetails(Number(params.id));
-
 
   return (
     <main className="container mx-auto px-4 py-8">
