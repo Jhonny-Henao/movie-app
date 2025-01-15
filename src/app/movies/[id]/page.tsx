@@ -4,13 +4,16 @@ import { tmdbApi } from '@/services/tmdb';
 import type { Genre } from '@/types/movie';
 import type { Metadata } from 'next';
 
-// Generador de metadatos
-export async function generateMetadata({
-  params,
-}: {
+// Definición de tipos
+type MoviePageProps = {
   params: { id: string }
-}): Promise<Metadata> {
-  const movie = await tmdbApi.getMovieDetails(Number(params.id));
+}
+
+// Función para generar metadatos
+export async function generateMetadata(
+  props: MoviePageProps
+): Promise<Metadata> {
+  const movie = await tmdbApi.getMovieDetails(Number(props.params.id));
   
   return {
     title: `${movie.title} - ABC Movies`,
@@ -23,13 +26,9 @@ export async function generateMetadata({
   };
 }
 
-// Componente de la página
-export default async function MoviePage({
-  params,
-}: {
-  params: { id: string }
-}) {
-  const movie = await tmdbApi.getMovieDetails(Number(params.id));
+// Página principal
+const Page = async (props: MoviePageProps) => {
+  const movie = await tmdbApi.getMovieDetails(Number(props.params.id));
 
   return (
     <main className="container mx-auto px-4 py-8">
@@ -99,3 +98,5 @@ export default async function MoviePage({
     </main>
   );
 }
+
+export default Page;
