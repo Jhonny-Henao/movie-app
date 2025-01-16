@@ -8,6 +8,11 @@ import { ClientPagination } from '@/components/ClientPagination';
 export const metadata = {
   title: 'Movies - Películas Populares',
   description: 'Descubre las películas más populares del momento en ABC Movies',
+  icons: {
+    icon: '/images/movie.png',
+    shortcut: '/images/movie.png',
+    apple: '/images/movie.png',
+  },
 };
 
 export default async function PageRoute({
