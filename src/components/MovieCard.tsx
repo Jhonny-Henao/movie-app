@@ -25,7 +25,7 @@ export const MovieCard = ({ movie }: MovieCardProps) => {
         </div>
         <div className="p-4">
           {/* Título de la película */}
-          <h2 className="font-bold text-lg mb-2">{movie.title}</h2>
+          <h2 className="font-bold text-lg mb-2 text-white">{movie.title}</h2>
           {/* Año de lanzamiento */}
           <p className="text-sm text-gray-600">
             {new Date(movie.release_date).getFullYear()}

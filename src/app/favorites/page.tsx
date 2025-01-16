@@ -44,14 +44,14 @@ export default function FavoritesPage() {
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <p className="text-center">Cargando favoritos...</p>
+        <p className="text-center text-white">Cargando favoritos...</p>
       </div>
     );
   }
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Mis Películas Favoritas</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-white">Mis Películas Favoritas</h1>
       {movies.length > 0 ? (
         <MovieGrid movies={movies} />
       ) : (

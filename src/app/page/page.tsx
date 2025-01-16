@@ -25,7 +25,7 @@ export default async function PageRoute({
 
   return (
     <main className="container mx-auto px-4 py-8 bg-black">
-      <h1 className="text-3xl font-bold mb-8 text-center">Películas Populares</h1>
+      <h1 className="text-3xl font-bold mb-8 text-center text-white">Películas Populares</h1>
       <SearchBar />
       <MovieGrid movies={movies} />
       <ClientPagination

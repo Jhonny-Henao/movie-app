@@ -61,12 +61,12 @@ export default async function MoviePage({
           <p className="text-gray-400 mb-6">{movie.overview}</p>
           
           <div className="mb-4">
-            <h2 className="text-xl font-semibold mb-2">Fecha de lanzamiento</h2>
+            <h2 className="text-xl font-semibold mb-2 text-white">Fecha de lanzamiento</h2>
             <p>{new Date(movie.release_date).toLocaleDateString()}</p>
           </div>
 
           <div className="mb-4">
-            <h2 className="text-xl font-semibold mb-2">Géneros</h2>
+            <h2 className="text-xl font-semibold mb-2 text-white">Géneros</h2>
             <div className="flex flex-wrap gap-2">
               {movie.genres.map((genre: Genre) => (
                 <span
@@ -80,7 +80,7 @@ export default async function MoviePage({
           </div>
 
           <div className="mb-6">
-            <h2 className="text-xl font-semibold mb-2">Puntuación</h2>
+            <h2 className="text-xl font-semibold mb-2 text-white">Puntuación</h2>
             <div className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full inline-block">
               {movie.vote_average.toFixed(1)} / 10
             </div>
@@ -88,7 +88,7 @@ export default async function MoviePage({
 
           {movie.videos?.results?.[0] && (
             <div className="mt-8">
-              <h2 className="text-xl font-semibold mb-4">Tráiler</h2>
+              <h2 className="text-xl font-semibold mb-4 text-white">Tráiler</h2>
               <div className="aspect-video">
                 <iframe
                   width="100%"
