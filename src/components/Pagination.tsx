@@ -55,7 +55,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     handlePageChange(newPage);
   };
 
-  const buttonBaseClass = "inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 hover:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 group";
+  const buttonBaseClass = "inline-flex text-blue-500 items-center justify-center w-10 h-10 rounded-lg bg-white border border-gray-200 hover:bg-gray-50 hover:border-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 group";
 
   return (
     <div className="flex flex-col items-center gap-4 mt-8">
@@ -105,7 +105,7 @@ export const Pagination: React.FC<PaginationProps> = ({
               </button>
               {validatedCurrentPage > 4 && (
                 <span className="inline-flex items-center justify-center w-10 h-10">
-                  <MoreHorizontal className="w-5 h-5 text-gray-400" />
+                  <MoreHorizontal className="w-5 h-5 text-blue-500" />
                 </span>
               )}
             </>
@@ -130,7 +130,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             <>
               {validatedCurrentPage < validatedTotalPages - 3 && (
                 <span className="inline-flex items-center justify-center w-10 h-10">
-                  <MoreHorizontal className="w-5 h-5 text-gray-400" />
+                  <MoreHorizontal className="w-5 h-5 text-blue-500" />
                 </span>
               )}
               <button
