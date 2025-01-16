@@ -10,7 +10,7 @@ export const ScrollToTopButton: React.FC = () => {
   // Mostrar el botón cuando la página se desplaza hacia abajo
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 1500) {
+      if (window.scrollY > 1700) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
