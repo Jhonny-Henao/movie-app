@@ -76,12 +76,12 @@ export const SearchBar = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Buscar películas..."
-          className="w-full pl-12 pr-28 py-3 rounded-xl border border-gray-300 text-lg text-gray-800 placeholder-gray-400 bg-gray-50 focus:outline-none focus:ring-4 focus:ring-indigo-500 transition-all duration-300 shadow-lg"
-        />
+          className="w-full pl-12 pr-28 py-3 rounded-xl border border-gray-300 text-lg text-gray-800 placeholder-gray-400 bg-gray-50 focus:outline-none focus:ring-4 focus:ring-gray-400 focus:ring-opacity-50 focus:border-transparent transition-all duration-300 shadow-lg hover:shadow-gray-500/50"
+          />
         
         <motion.button
           type="submit"
-          className="absolute right-4 px-6 py-2 bg-indigo-600 text-white rounded-full shadow-xl hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300"
+          className="absolute right-4 px-6 py-2 bg-gradient-to-r from-blue-500 via-indigo-600 to-blue-700 text-white rounded-full shadow-xl hover:bg-gradient-to-r hover:from-blue-400 hover:via-indigo-500 hover:to-blue-600 focus:ring-4 focus:ring-indigo-300"
           whileHover={{ 
             scale: 1.05,
             backgroundColor: "#4f46e5"
