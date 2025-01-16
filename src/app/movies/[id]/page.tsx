@@ -57,12 +57,12 @@ export default async function MoviePage({
           />
         </div>
         <div>
-          <h1 className="text-4xl font-bold mb-4">{movie.title}</h1>
+          <h1 className="text-4xl font-bold mb-4 text-white">{movie.title}</h1>
           <p className="text-gray-400 mb-6">{movie.overview}</p>
           
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-2 text-white">Fecha de lanzamiento</h2>
-            <p>{new Date(movie.release_date).toLocaleDateString()}</p>
+            <p className='text-white'>{new Date(movie.release_date).toLocaleDateString()}</p>
           </div>
 
           <div className="mb-4">

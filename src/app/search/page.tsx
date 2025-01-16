@@ -27,7 +27,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">
+      <h1 className="text-3xl font-bold mb-8 text-center text-white">
         Resultados para: {query}
       </h1>
       <SearchBar />
