@@ -2,7 +2,7 @@
 import type { MovieDetails, MovieApiResponse } from '@/types/movie';
 import { createTMDBRequestOptions, createTMDBApiUrl } from '@/config/tmdb.config';
 
-const TMDB_MAX_PAGE = 500; // TMDB limita los resultados a 500 páginas de 48.189 y este es un límite del servidor.
+const TMDB_MAX_PAGE = 500; // TMDB limita los resultados a 500 páginas de 48.189 y 500 es el límite del servidor.
 
 class TMDBError extends Error {
   constructor(message: string, public status?: number) {
