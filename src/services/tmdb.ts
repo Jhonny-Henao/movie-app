@@ -1,5 +1,4 @@
 //Services/tmdb.ts
-
 import type { MovieDetails, MovieApiResponse } from '@/types/movie';
 import { createTMDBRequestOptions, createTMDBApiUrl } from '@/config/tmdb.config';
 
@@ -38,6 +37,7 @@ async function fetchTMDB<T>(endpoint: string, options = createTMDBRequestOptions
     const data = await res.json();
     return data as T;
   } catch (error) {
+    console.error('Fetch TMDB Error:', error); // Registrar el error en la consola
     if (error instanceof TMDBError) {
       throw error;
     }
@@ -98,9 +98,10 @@ export const tmdbApi = {
     try {
       return Promise.all(promises);
     } catch (error) {
+      console.error('Error fetching multiple movies:', error); // Registrar el error en la consola
       throw new TMDBError('Error fetching multiple movies');
     }
   }
 };
 
-export { TMDBError, TMDB_MAX_PAGE  };
+export { TMDBError, TMDB_MAX_PAGE };
