@@ -4,12 +4,12 @@
 import { useEffect, useState, useCallback } from 'react';
 import { MovieGrid } from '@/components/MovieGrid';
 import { tmdbApi } from '@/services/tmdb';
-import { useFavorites } from '@/hooks/useFavorites';  
+import { useFavorites } from '@/hooks/useFavorites';  // Aquí usamos useFavorites
 import type { Movie } from '@/types/movie';
 import { motion } from 'framer-motion';
 
 export default function FavoritesPage() {
-  const { favorites, updateFavorites } = useFavorites();  
+  const { favorites, updateFavorites } = useFavorites();  // Eliminamos toggleFavorite
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(true);
 
