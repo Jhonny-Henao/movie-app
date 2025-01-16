@@ -61,3 +61,4 @@ export interface MovieApiResponse {
   total_results: number;
 }
 
+
