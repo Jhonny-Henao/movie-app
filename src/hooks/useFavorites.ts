@@ -1,3 +1,4 @@
+//Hooks/UseFavorites.ts
 import { useState, useEffect } from 'react';
 
 export const useFavorites = () => {

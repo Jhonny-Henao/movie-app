@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   typescript: {
-    // Ignorar errores de TypeScript durante el build
+    // Ignorar errores de TypeScript durante el build si se presentan
     ignoreBuildErrors: true,
   },
   

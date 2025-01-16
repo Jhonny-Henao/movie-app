@@ -1,5 +1,7 @@
+// app/movie/[id]/page.tsx
 import Image from 'next/image';
 import { FavoriteButton } from '@/components/FavoriteButton';
+import { CastSection } from '@/components/cast/CastSection';
 import { tmdbApi } from '@/services/tmdb';
 import type { Genre } from '@/types/movie';
 import type { Metadata } from 'next';
@@ -102,6 +104,11 @@ export default async function MoviePage({
           )}
         </div>
       </div>
+
+      {/* Sección de reparto */}
+      {movie.credits?.cast && movie.credits.cast.length > 0 && (
+        <CastSection cast={movie.credits.cast} maxDisplay={6} />
+      )}
     </main>
   );
 }

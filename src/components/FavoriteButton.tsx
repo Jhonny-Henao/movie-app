@@ -1,3 +1,4 @@
+//Componentes/FavoriteButton.tsx
 'use client';
 
 import { useFavorites } from '@/hooks/useFavorites'; 

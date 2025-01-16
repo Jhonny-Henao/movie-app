@@ -1,16 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation'; // Usamos usePathname
+import { usePathname } from 'next/navigation';
 import { Loader } from 'lucide-react';
 import { ScrollToTopButton } from '@/components/ScrollToTopButton';
 import './globals.css';
 import { Header } from '@/components/Header';
-
-// export const metadata = {
-//   title: 'ABC Movies',
-//   description: 'Tu plataforma de películas favorita',
-// };
 
 export default function RootLayout({
   children,
@@ -34,7 +29,7 @@ export default function RootLayout({
 
   return (
     <html lang="es">
-      <body>
+      <body className='bg-black'>
         {/* Componente header para toda la app */}
         <Header />
 
@@ -47,7 +42,7 @@ export default function RootLayout({
             <Loader className="animate-spin text-blue-600" size={48} />
           </div>
         ) : (
-          // El contenido principal solo se muestra cuando 'loading' es false
+          // El contenido principal solo se muestra cuando 'loading' es false despues de su carga
           <main>{children}</main>
         )}
       </body>

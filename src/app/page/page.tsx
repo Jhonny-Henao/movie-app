@@ -24,7 +24,7 @@ export default async function PageRoute({
   const { results: movies, total_pages } = await tmdbApi.getPopularMovies(page);
 
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="container mx-auto px-4 py-8 bg-black">
       <h1 className="text-3xl font-bold mb-8 text-center">Películas Populares</h1>
       <SearchBar />
       <MovieGrid movies={movies} />
