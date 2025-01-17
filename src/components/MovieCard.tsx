@@ -29,9 +29,9 @@ export const MovieCard = ({ movie, onToggleFavorite }: MovieCardProps) => {
             {new Date(movie.release_date).getFullYear()}
           </p>
           <div className="mt-2 flex items-center">
-            <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
-              {movie.vote_average.toFixed(1)}
-            </span>
+          <span className="bg-yellow-100 text-yellow-800 px-2 py-1 rounded">
+            {movie.vote_average && !isNaN(movie.vote_average) ? movie.vote_average.toFixed(1) : 'N/A'}
+          </span>
           </div>
         </div>
       </Link>
