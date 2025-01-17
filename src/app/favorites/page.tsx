@@ -1,4 +1,3 @@
-// FavoritesPage.tsx
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
@@ -66,11 +65,13 @@ export default function FavoritesPage() {
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <BackButton />
+      <h1 className="text-3xl font-bold text-center text-white mb-4">
+          Mis Películas Favoritas
+        </h1>
+      <div className="flex items-center mb-8">
+        <BackButton />
+      </div>
 
-      <h1 className="text-3xl font-bold mb-8 text-center text-white">
-        Mis Películas Favoritas
-      </h1>
       {movies.length > 0 ? (
         <motion.div 
           className="movie-grid"
