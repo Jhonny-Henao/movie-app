@@ -7,6 +7,7 @@ import { tmdbApi } from '@/services/tmdb';
 import { useFavorites } from '@/hooks/useFavorites';
 import type { Movie } from '@/types/movie';
 import { motion } from 'framer-motion';
+import { BackButton } from '@/components/BackButton';
 
 export default function FavoritesPage() {
   const { favorites, updateFavorites } = useFavorites(); 
@@ -46,17 +47,13 @@ export default function FavoritesPage() {
     };
 
     fetchFavorites();
-  }, [favorites]); // Dependencia en favorites
+  }, [favorites]);
 
   const handleRemoveFavorite = useCallback((movieId: number) => {
-    // Primero eliminamos de la lista de películas visibles
     setMovies(prevMovies => prevMovies.filter(movie => movie.id !== movieId));
-
-    // Actualizamos el localStorage y el estado global de favoritos
     const updatedFavorites = favorites.filter((id) => id !== movieId);
-    updateFavorites(updatedFavorites);  // Actualiza el estado global y localStorage
-
-    console.log('Removed movie from favorites:', movieId); // Depuración
+    updateFavorites(updatedFavorites);
+    console.log('Removed movie from favorites:', movieId);
   }, [favorites, updateFavorites]);
 
   if (loading) {
@@ -69,6 +66,8 @@ export default function FavoritesPage() {
 
   return (
     <main className="container mx-auto px-4 py-8">
+      <BackButton />
+
       <h1 className="text-3xl font-bold mb-8 text-center text-white">
         Mis Películas Favoritas
       </h1>

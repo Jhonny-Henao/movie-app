@@ -5,6 +5,7 @@ import { CastSection } from '@/components/cast/CastSection';
 import { tmdbApi } from '@/services/tmdb';
 import type { Genre } from '@/types/movie';
 import type { Metadata } from 'next';
+import { BackButton } from '@/components/BackButton'; // We'll create this component
 
 type MoviePageProps = {
   id: string;
@@ -41,7 +42,10 @@ export default async function MoviePage({
 
   return (
     <main className="container mx-auto px-4 py-8">
-      <div className="grid md:grid-cols-2 gap-8">
+      {/* Back Button */}
+      <BackButton />
+      
+      <div className="grid md:grid-cols-2 gap-8 mt-4">
         <div className="relative aspect-[2/3]">
           <Image
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
